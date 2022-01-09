@@ -11,30 +11,57 @@
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    
+    <script>
+        let orderedMenu = ''
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            orderedMenu = decodeURIComponent(results[2].replace(/\+/g, ' '))
+            let shownMenu = document.getElementById('orderedMenu')
+            shownMenu.innerText = `${orderedMenu}`
+            alert(orderedMenu)
+
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+        function goToNextPage(){
+            window.location.href = `./secondBongousse.html?orderedMenu=${orderedMenu}`
+        }
+        function goToBongousse(){
+            window.location.href = `./bongousse.html?orderedMenu=${orderedMenu}`
+        }
+        function goToGgulmat(){
+            window.location.href = `./ggulmat.html?orderedMenu=${orderedMenu}`
+        }
+        function goToTopping(){
+            window.location.href = `./topping.html?orderedMenu=${orderedMenu}`
+        }
+        function goToSideMenu(){
+            window.location.href = `./sideMenu.html?orderedMenu=${orderedMenu}`
+        }
+    </script>
+
     <title>봉구스 연습</title>
 </head>
 <body>
-    <div class="container p-0">
+    <div class="order">
+        <p class="nanum22Bold" onclick="getParameterByName('orderedMenu')">주문메뉴 보기</p>
+        <p class="nanum22Bold" id="orderedMenu"></p>
+    </div>
+    <div class="container menuContainer p-0">
         <div class="mx-0">
             <table class="width100">
                 <tr class="spaceBetween">
-                    <th class="thColor nanum30Bold">
-                        <a href="./bongousse.html">밥버거</a>
-                    </th>
+                    <th class="thColor nanum30Bold" onclick="goToBongousse()">밥버거</th>
                     <th class="thColor nanum30Bold">토핑메뉴</th>
-                    <th class="thColor nanum30Bold">
-                        <a href="./toppoing.html">토핑</a>
-                    </th>
+                    <th class="thColor nanum30Bold" onclick="goToTopping()">토핑</th>
                     <th class="thColor nanum30Bold">컵밥</th>
-                    <th class="thColor nanum30Bold">
-                        <a href="./sideMenu.html">사이드메뉴</a>
-                    </th>
+                    <th class="thColor nanum30Bold" onclick="goToSideMenu()">사이드메뉴</th>
                 </tr>
                 <tr class="spaceBetween">
-                    <th class="thColor nanum30Bold">
-                        <a href="./ggulmat.html">꿀맛</a>
-                    </th>
+                    <th class="thColor nanum30Bold" onclick="goToGgulmat()">꿀맛</th>
                     <th class="thColor nanum30Bold">금액키</th>
                     <th class="thColor nanum30Bold">DIY하부메뉴</th>
                     <th class="thColor nanum30Bold">DIY도시락</th>
@@ -93,10 +120,16 @@
 </body>
 </html>
 <style>
+    .order{
+        max-width: 700px;
+        width:100%;
+        margin: 0 auto;
+        padding:12px;
+    }
     .width100{
         width : 100%;
     }
-    .body{
+    .menuContainer{
         max-width : 700px;
         max-height : 700px;
         width:100%;
@@ -125,10 +158,15 @@
         flex-direction: spaceBetween;
         justify-content: space-between;
     }
+    .nanum22Bold{
+        font-family: 'Nanum Gothic';
+        font-size: 22px;
+        font-family: 800;
+    }
     .thColor{
         background-color: blanchedalmond;
     }
     a:link { color: black; text-decoration: none;}
     a:visited { color: black; text-decoration: none;}
     a:hover { color: black; text-decoration: none;}
-</style>
+</styl>

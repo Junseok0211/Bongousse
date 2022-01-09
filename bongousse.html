@@ -44,6 +44,32 @@
             shownMenu.innerText = `${order}`
             
         }
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        function goToNextPage(){
+            window.location.href = `./secondBongousse.html?orderedMenu=${order}`
+        }
+        function goToBongousse(){
+            window.location.href = `./bongousse.html?orderedMenu=${orderedMenu}`
+        }
+        function goToGgulmat(){
+            window.location.href = `./ggulmat.html?orderedMenu=${order}`
+        }
+        function goToTopping(){
+            window.location.href = `./topping.html?orderedMenu=${order}`
+        }
+        function goToSideMenu(){
+            window.location.href = `./sideMenu.html?orderedMenu=${order}`
+        }
+        
+        
     </script>
     <title>봉구스 연습</title>
 </head>
@@ -60,22 +86,14 @@
         <div class="mx-0">
             <table class="width100">
                 <tr class="spaceBetween">
-                    <th class="thColor nanum30Bold">
-                        <a href="./bongousse.html">밥버거</a>
-                    </th>
+                    <th class="thColor nanum30Bold" onclick="goToBongousse()">밥버거</th>
                     <th class="thColor nanum30Bold">토핑메뉴</th>
-                    <th class="thColor nanum30Bold">
-                        <a href="./toppoing.html">토핑</a>
-                    </th>
+                    <th class="thColor nanum30Bold" onclick="goToTopping()">토핑</th>
                     <th class="thColor nanum30Bold">컵밥</th>
-                    <th class="thColor nanum30Bold">
-                        <a href="./sideMenu.html">사이드메뉴</a>
-                    </th>
+                    <th class="thColor nanum30Bold" onclick="goToSideMenu()">사이드메뉴</th>
                 </tr>
                 <tr class="spaceBetween">
-                    <th class="thColor nanum30Bold">
-                        <a href="./ggulmat.html">꿀맛</a>
-                    </th>
+                    <th class="thColor nanum30Bold" onclick="goToGgulmat()">꿀맛</th>
                     <th class="thColor nanum30Bold">금액키</th>
                     <th class="thColor nanum30Bold">DIY하부메뉴</th>
                     <th class="thColor nanum30Bold">DIY도시락</th>
@@ -123,8 +141,8 @@
                     <td class="nanum30Bold">팩음료700</td>
                     <td class="nanum30Bold">음류수1300</td>
                     <td class="nanum30Bold">추억의도시락</td>
-                    <td class="nanum30Bold">
-                        <a href="./secondBongouse.html">></a>
+                    <td class="nanum30Bold" onclick="goToNextPage()">
+                        >
                     </td>
                 </tr>
             </table>
